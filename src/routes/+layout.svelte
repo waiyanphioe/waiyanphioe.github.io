@@ -1,21 +1,16 @@
 <script>
 	import '../app.css';
-	import { page } from '$app/stores';
+	import Footer from '../components/footer.svelte';
+	import Header from '../components/header.svelte';
+	import { info } from '$lib/data/info';
 </script>
 
 <svelte:head>
-	<title>Home - Wai Yan Phioe</title>
+	<title>Portfolio - {info.name}</title>
 </svelte:head>
 
-<div class="container">
+<Header links={info.navLinks} name={info.name} />
+<main class="container">
 	<slot />
-</div>
-
-<style>
-	.container {
-		width: 100%;
-		height: 100vh;
-		align-items: center;
-		text-align: center;
-	}
-</style>
+</main>
+<Footer />
