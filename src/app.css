@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 @layer components {
+	::-webkit-scrollbar {
+		@apply w-2 bg-white dark:bg-dark;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply rounded bg-gray dark:bg-light;
+	}
+
 	body {
-		@apply bg-[#121316];
+		@apply text-dark bg-light dark:text-light dark:bg-dark;
 	}
 }
-
+/* 
 :root {
 	--color-bg: #121316;
 	--color-bg-transparent: hsla(0, 0%, 7%, 0);
@@ -83,7 +91,7 @@
 	--callout-border-rgb: 172, 175, 176;
 	--card-rgb: 180, 185, 188;
 	--card-border-rgb: 131, 134, 135;
-}
+} */
 
 *,
 ::after,
@@ -106,18 +114,6 @@ body {
 	font-weight: 500;
 	-webkit-text-size-adjust: 100%;
 	overflow-x: hidden;
-	color: var(--color-text-main);
-	background-color: var(--color-bg);
-}
-
-::-webkit-scrollbar {
-	width: 0.6rem;
-	background: var(--color-bg);
-}
-
-::-webkit-scrollbar-thumb {
-	background: var(--color-text-main);
-	border-radius: 0.5rem;
 }
 
 a {
@@ -125,7 +121,7 @@ a {
 }
 
 li {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 /* gradient heading */
@@ -140,7 +136,7 @@ li {
 	background-clip: text;
 	text-fill-color: transparent;
 	background-size: 150% 150%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 1s ease infinite;
 	line-height: 1.2;
 }
 

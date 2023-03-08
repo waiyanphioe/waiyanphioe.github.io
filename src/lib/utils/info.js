@@ -113,19 +113,23 @@ export const info = {
 
 export const navLinks = [
 	{
-		path: '#home',
+		path: './',
 		title: 'Home'
 	},
 	{
-		path: '#',
-		title: 'Features'
+		path: './about',
+		title: 'About'
 	},
 	{
-		path: './blogs',
-		title: 'Product'
+		path: './articles',
+		title: 'Articles'
 	},
 	{
-		path: '#',
-		title: 'Clients'
+		path: './projects',
+		title: 'Projects'
+	},
+	{
+		path: './uses',
+		title: 'Uses'
 	}
 ];

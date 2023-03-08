@@ -1,12 +1,21 @@
 <script>
-	import { navLinks } from '$lib/data/info';
+	import { navLinks } from '$lib/utils/info';
 	import profile from '$lib/images/profile.jpg';
-	import ff from '$lib/images/ff.png';
+	import { browser } from '$app/environment';
 
 	let show;
 	let menu;
+	let isDarkMode = browser ? Boolean(document.documentElement.classList.contains('dark')) : true;
+
 	const handler = () => {
-		window.scrollY > 300 ? (show = true) : (show = false);
+		window.scrollY > 200 ? (show = true) : (show = false);
+	};
+
+	const disableTransitionsTemporarily = () => {
+		document.documentElement.classList.add('[&_*]:!transition-none');
+		window.setTimeout(() => {
+			document.documentElement.classList.remove('[&_*]:!transition-none');
+		}, 0);
 	};
 </script>
 
@@ -15,7 +24,9 @@
 <header class="w-full h-auto mt-[2rem] lg:mt-3 px-4 fixed top-0 left-0 right-0">
 	<nav
 		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-blur-xl ${
-			show ? 'bg-[rgba(31,32,35,.8)] ' : 'bg-[hsla(0, 0%, 7%, 0)] '
+			show
+				? ' bg-[rgba(255,255,255,0.5)] shadow-md dark:bg-[rgba(31,32,35,.8)] '
+				: 'bg-[hsla(0, 0%, 7%, 0)] '
 		}`}
 	>
 		<ul class="w-full h-full list-none flex justify-between px-[12px] py-[10px] m-0 items-center">
@@ -25,7 +36,6 @@
 						src={profile}
 						alt="logo"
 						class="max-w-[2rem] aspect-square object-contain rounded-full"
-						loading="lazy"
 					/>
 				</a>
 			</li>
@@ -33,7 +43,7 @@
 				<ul class="list-none flex w-auto gap-2 py-[10px] px-[12px] lg:hidden items-center">
 					{#each navLinks as navLink, index}
 						<li
-							class={`font-poppins font-medium capitalize text-[16px] text-light040 transition hover:text-light`}
+							class="font-poppins font-medium capitalize text-[16px] text-black dark:text-light040 transition dark:hover:text-white hover:text-gray"
 						>
 							<a href={navLink.path} class="p-3">{navLink.title}</a>
 						</li>
@@ -44,8 +54,23 @@
 				<ul class="list-none flex flex-row mr-0 gap-2 items-center">
 					<li>
 						<button
+							type="button"
+							role="switch"
+							aria-label="Toggle Dark Mode"
+							aria-checked={isDarkMode}
 							class="p-2 border-none rounded-full bg-light005 "
-							on:click={() => console.log('ok')}
+							on:click={() => {
+								isDarkMode = !isDarkMode;
+								localStorage.setItem('isDarkMode', isDarkMode.toString());
+
+								disableTransitionsTemporarily();
+
+								if (isDarkMode) {
+									document.querySelector('html').classList.add('dark');
+								} else {
+									document.querySelector('html').classList.remove('dark');
+								}
+							}}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +78,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="w-6 h-6 dark:hidden"
+								class="w-6 h-6 dark:text-light040 hover:dark:text-light dark:block hidden"
 							>
 								<path
 									stroke-linecap="round"
@@ -68,7 +93,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="w-6 h-6 hidden"
+								class="w-6 h-6 dark:hidden block hover:text-light"
 							>
 								<path
 									stroke-linecap="round"
@@ -82,8 +107,10 @@
 						<a
 							href="https://google.com"
 							target="_blank"
-							class={`w-auto block py-2 px-6 font-medium transition text-base rounded-3xl border-none text-white ${
-								show ? 'bg-blue hover:bg-blueDark' : 'bg-light020 hover:bg-light010'
+							class={`block py-2 px-6 font-medium transition text-base rounded-3xl border-none text-dark dark:text-light ${
+								show
+									? 'dark:bg-blue dark:hover:bg-blueDark'
+									: 'dark:bg-light020 dark:hover:bg-light010'
 							}`}
 							rel="noopener noreferrer">Download CV</a
 						>
@@ -91,7 +118,7 @@
 					<li class="hidden md:block">
 						<button
 							class="p-2 border-none rounded-full bg-light005"
-							on:click={() => (menu ? (menu = false) : (menu = true))}
+							on:click={() => (menu = !menu)}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
