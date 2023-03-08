@@ -1,66 +1,123 @@
 <script>
-	import { createLogo } from '../utils';
-	import menu from '$lib/images/menu.svg';
-	import close from '$lib/images/close.svg';
-	export let links;
-	export let name;
-	let toggle = false;
-	const handleToggle = () => {
-		if (toggle) {
-			toggle = false;
-		} else {
-			toggle = true;
-		}
+	import { navLinks } from '$lib/data/info';
+	import profile from '$lib/images/profile.jpg';
+	import ff from '$lib/images/ff.png';
+
+	let show;
+	let menu;
+	const handler = () => {
+		window.scrollY > 300 ? (show = true) : (show = false);
 	};
 </script>
 
-<header class="container flex items-center justify-between h-[80px] sm:h-[123px]">
-	<a class="text-2xl dark:text-light font-semibold dark:font-semibold font-outfit" href="/"
-		>{createLogo(name)}.
-	</a>
+<svelte:window on:scroll={handler} />
 
-	<ul class=" list-none sm:flex hidden justify-end items-center flex-1">
-		{#each links as link, index}
-			<li
-				key={index}
-				class={`font-poppins font-normal cursor-pointer text-[16px] text-white ${
-					index === links.length - 1 ? 'mr-0' : 'mr-10'
-				}`}
-			>
-				<a href={`#${link.id}`} class="tester">
-					{link.title}
+<header class="w-full h-auto mt-[2rem] lg:mt-3 px-4 fixed top-0 left-0 right-0">
+	<nav
+		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-blur-xl ${
+			show ? 'bg-[rgba(31,32,35,.8)] ' : 'bg-[hsla(0, 0%, 7%, 0)] '
+		}`}
+	>
+		<ul class="w-full h-full list-none flex justify-between px-[12px] py-[10px] m-0 items-center">
+			<li class="w-[2rem] h-[2rem] p-0 text-center items-center">
+				<a href="/">
+					<img
+						src={profile}
+						alt="logo"
+						class="max-w-[2rem] aspect-square object-contain rounded-full"
+						loading="lazy"
+					/>
 				</a>
 			</li>
-		{/each}
-	</ul>
-	<div class="sm:hidden flex flex-1 justify-end items-center">
-		<button on:click={handleToggle} aria-label="Increase the counter by one">
-			<img
-				src={toggle ? close : menu}
-				alt="menu"
-				class="w-[28px] h-[28px] object-contain cursor-pointer"
-			/>
-		</button>
+			<li class="w-auto">
+				<ul class="list-none flex w-auto gap-2 py-[10px] px-[12px] lg:hidden items-center">
+					{#each navLinks as navLink, index}
+						<li
+							class={`font-poppins font-medium capitalize text-[16px] text-light040 transition hover:text-light`}
+						>
+							<a href={navLink.path} class="p-3">{navLink.title}</a>
+						</li>
+					{/each}
+				</ul>
+			</li>
+			<li class="w-auto">
+				<ul class="list-none flex flex-row mr-0 gap-2 items-center">
+					<li>
+						<button
+							class="p-2 border-none rounded-full bg-light005 "
+							on:click={() => console.log('ok')}
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-6 h-6 dark:hidden"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+								/>
+							</svg>
 
-		<div
-			class={`${
-				toggle ? 'flex' : 'hidden'
-			} p-6 bg-black-gradient bg-slate-500 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
-		>
-			<ul class=" list-none flex flex-col justify-end items-center flex-1">
-				{#each links as link, index}
-					<li
-						key={index}
-						class={`font-poppins font-normal cursor-pointer text-[16px] text-white ${
-							index === links.length - 1 ? 'mr-0' : 'mb-4'
-						}`}
-					>
-						<a href={`#${link.id}`} class="tester">
-							{link.title}
-						</a>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-6 h-6 hidden"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+								/>
+							</svg>
+						</button>
 					</li>
-				{/each}
-			</ul>
+					<li class="md:hidden block">
+						<a
+							href="https://google.com"
+							target="_blank"
+							class={`w-auto block py-2 px-6 font-medium transition text-base rounded-3xl border-none text-white ${
+								show ? 'bg-blue hover:bg-blueDark' : 'bg-light020 hover:bg-light010'
+							}`}
+							rel="noopener noreferrer">Download CV</a
+						>
+					</li>
+					<li class="hidden md:block">
+						<button
+							class="p-2 border-none rounded-full bg-light005"
+							on:click={() => (menu ? (menu = false) : (menu = true))}
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-6 h-6"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+								/>
+							</svg>
+						</button>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class={`max-w-4xl p-0 m-0 ${menu ? 'relative' : 'hidden'} minmd:hidden`}>
+		<div
+			class={`p-6 absolute top-1 right-0 mx-4 my-2 min-w-[140px] rounded-2xl transition backdrop-blur-xl bg-[rgba(31,32,35,.8)] `}
+		>
+			jjijo
 		</div>
 	</div>
 </header>

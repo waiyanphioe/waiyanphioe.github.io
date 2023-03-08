@@ -1,9 +1,19 @@
 <script>
 	import { info } from '$lib/data/info';
-	import Hero from '../components/hero.svelte';
-	import Experience from '../components/experience.svelte';
+	import Head from '../components/head.svelte';
+	import Hero from '../sections/hero.svelte';
+	import Projects from '../components/projects.svelte';
 </script>
 
-<Hero name={info.name} about={info.about} />
-<Experience title="EXPERIENCE" details={info.experience} />
-<Experience title="EDUCATION" details={info.education} />
+<Head name="Wai Yan Phioe" />
+
+<Hero name={info.name} />
+<Hero name={info.name} />
+<Hero name={info.name} />
+<Hero name={info.name} />
+<Hero name={info.name} />
+<Projects />
+<Hero name={info.name} />
+<Hero name={info.name} />
+<Hero name={info.name} />
+<Hero name={info.name} />

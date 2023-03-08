@@ -110,3 +110,22 @@ export const info = {
 		}
 	]
 };
+
+export const navLinks = [
+	{
+		path: '#home',
+		title: 'Home'
+	},
+	{
+		path: '#',
+		title: 'Features'
+	},
+	{
+		path: './blogs',
+		title: 'Product'
+	},
+	{
+		path: '#',
+		title: 'Clients'
+	}
+];

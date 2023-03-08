@@ -4,39 +4,49 @@
 
 @layer components {
 	body {
-		@apply bg-light dark:bg-dark;
-	}
-	.container {
-		@apply max-w-[1112px] mx-auto px-4;
-	}
-	/* h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply font-outfit;
-	} */
-	h1 {
-		@apply text-6xl sm:text-8xl main-heading;
-	}
-	h2 {
-		@apply text-xl font-semibold;
-	}
-	p,
-	li,
-	a {
-		@apply text-dark-gray;
-	}
-	.tester {
-		@apply relative after:content-[''] after:absolute after:w-[0%] after:h-[3px] after:bottom-[-4px] after:left-0 after:ease-in-out after:duration-300 after:rounded-md after:bg-white hover:after:w-full;
-	}
-	.footer-icons {
-		@apply dark:text-light flex items-center border border-dark dark:border-light p-4 rounded-lg justify-center;
+		@apply bg-[#121316];
 	}
 }
 
 :root {
+	--color-bg: #121316;
+	--color-bg-transparent: hsla(0, 0%, 7%, 0);
+	--color-text-main: #fff;
+	--color-text-navigation: var(--color-white-040);
+	--color-text-paragraph: var(--color-white-040);
+	--color-blue: #248aff;
+	--color-blue-dark: #217ce5;
+	--color-red: #fd585b;
+	--color-yellow: #ffb01f;
+	--color-purple: rgba(143, 102, 255, 0.13);
+	--color-purple-bright: #a770ff;
+	--color-green: rgba(73, 188, 84, 0.1);
+	--color-green-bright: #47b35f;
+	--color-pink: #ff5cab;
+	--color-white: #fff;
+	--color-bg-pink: #ffe6e6;
+	--color-bg-greenish: #c1f6e8;
+	--color-btn-bg: hsla(0, 0%, 100%, 0.03);
+	--color-btn-bg-highlight: hsla(0, 0%, 100%, 0.06);
+	--color-panel-bg: hsla(0, 0%, 100%, 0.03);
+	--color-panel-bg-elevation-1: hsla(0, 0%, 100%, 0.05);
+	--color-white-001: hsla(0, 0%, 100%, 0.01);
+	--color-white-003: hsla(0, 0%, 100%, 0.03);
+	--color-white-005: hsla(0, 0%, 100%, 0.05);
+	--color-white-010: hsla(0, 0%, 100%, 0.1);
+	--color-white-020: hsla(0, 0%, 100%, 0.2);
+	--color-white-040: hsla(0, 0%, 100%, 0.4);
+	--color-white-060: hsla(0, 0%, 100%, 0.6);
+	--color-white-080: hsla(0, 0%, 100%, 0.8);
+	--color-free: var(--color-white-003);
+	--color-free-darker: var(--color-white-005);
+	--color-super: #00a376;
+	--color-super-darker: #008761;
+	--color-super-lighter: #38e2b3;
+	--color-team: #915eff;
+	--color-team-darker: #7448d4;
+	--color-team-lighter: #d680ff;
+
 	--max-width: 1100px;
 	--border-radius: 12px;
 	--font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono',
@@ -75,66 +85,47 @@
 	--card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--foreground-rgb: 255, 255, 255;
-		--background-start-rgb: 0, 0, 0;
-		--background-end-rgb: 0, 0, 0;
-
-		--primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-		--secondary-glow: linear-gradient(
-			to bottom right,
-			rgba(1, 65, 255, 0),
-			rgba(1, 65, 255, 0),
-			rgba(1, 65, 255, 0.3)
-		);
-
-		--tile-start-rgb: 2, 13, 46;
-		--tile-end-rgb: 2, 5, 19;
-		--tile-border: conic-gradient(
-			#ffffff80,
-			#ffffff40,
-			#ffffff30,
-			#ffffff20,
-			#ffffff10,
-			#ffffff10,
-			#ffffff80
-		);
-
-		--callout-rgb: 20, 20, 20;
-		--callout-border-rgb: 108, 108, 108;
-		--card-rgb: 100, 100, 100;
-		--card-border-rgb: 200, 200, 200;
-	}
-}
-
-* {
-	box-sizing: border-box;
+*,
+::after,
+::before {
 	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 html,
 body {
-	max-width: 100vw;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-family: SplineSans, system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
+		Arial, sans-serif;
+	font-weight: 500;
+	-webkit-text-size-adjust: 100%;
 	overflow-x: hidden;
+	color: var(--color-text-main);
+	background-color: var(--color-bg);
 }
 
-body {
-	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-		rgb(var(--background-start-rgb));
+::-webkit-scrollbar {
+	width: 0.6rem;
+	background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-text-main);
+	border-radius: 0.5rem;
 }
 
 a {
-	color: inherit;
 	text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
+li {
+	font-size: 18px;
 }
 
 /* gradient heading */
