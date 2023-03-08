@@ -8,7 +8,7 @@
 	let isDarkMode = browser ? Boolean(document.documentElement.classList.contains('dark')) : true;
 
 	const handler = () => {
-		window.scrollY > 200 ? (show = true) : (show = false);
+		window.scrollY > 100 ? (show = true) : (show = false);
 	};
 
 	const disableTransitionsTemporarily = () => {

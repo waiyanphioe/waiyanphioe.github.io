@@ -7,7 +7,9 @@ module.exports = {
 		extend: {
 			colors: {
 				dark: '#121316',
+				bgDark: '#121316',
 				light: '#FFFFFF',
+				bgLight: '#FFFFFF',
 				light005: ' hsla(0, 0%, 100%, 0.05)',
 				light010: 'hsla(0, 0%, 100%, 0.1)',
 				light020: 'hsla(0, 0%, 100%, 0.2)',
@@ -28,7 +30,7 @@ module.exports = {
 			xl: { max: '1279px' },
 
 			lg: { max: '1023px' },
-			minlg: '1024px',
+			'min-lg': '1024px',
 
 			md: { max: '767px' },
 			minmd: '768px',
