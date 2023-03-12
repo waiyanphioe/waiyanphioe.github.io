@@ -9,13 +9,20 @@
 	const handler = () => {
 		window.scrollY > 100 ? (show = true) : (show = false);
 	};
+
+	function disableTransitionsTemporarily() {
+		document.documentElement.classList.add('[&_*]:!transition-none');
+		window.setTimeout(() => {
+			document.documentElement.classList.remove('[&_*]:!transition-none');
+		}, 0);
+	}
 </script>
 
 <svelte:window on:scroll={handler} />
 
-<header class="w-full h-auto mt-[2rem] lg:mt-3 px-4 fixed top-0 left-0 right-0">
+<header class="w-full h-auto mt-[2rem] lg:mt-3 px-4 fixed z-30 top-0 left-0 right-0">
 	<nav
-		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-blur-xl ${
+		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-blur-md ${
 			show ? ' bg-light060 shadow-md dark:bg-darkBg ' : ' bg-dark-transparent'
 		}`}
 	>
@@ -52,6 +59,8 @@
 							on:click={() => {
 								isDarkMode = !isDarkMode;
 								localStorage.setItem('isDarkMode', isDarkMode.toString());
+
+								disableTransitionsTemporarily();
 
 								if (isDarkMode) {
 									document.documentElement.classList.add('dark');

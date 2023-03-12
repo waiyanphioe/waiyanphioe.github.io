@@ -8,6 +8,6 @@
 
 <Head name="Wai Yan Phioe" />
 
-<Hero name={info.name} about={info.about} />
+<Hero name={info.name} />
 <Experience title={'EDUCATION'} details={info.education} />
 <ProjectsWrapper projects={info.projects} />

@@ -1,3 +1,5 @@
+@import 'fonts.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -127,7 +129,7 @@ li {
 /* gradient heading */
 .main-heading {
 	display: inline-block;
-	margin: 2rem 0;
+	margin: 1rem 0;
 	font-style: normal;
 	font-weight: 600;
 	background: linear-gradient(89.81deg, #9845e8 -1.72%, #33d2ff 54.05%, #dd5789 99.78%);
