@@ -4,11 +4,11 @@
 
 @layer components {
 	::-webkit-scrollbar {
-		@apply w-2 bg-white dark:bg-dark;
+		@apply w-3 bg-light dark:bg-dark;
 	}
 
 	::-webkit-scrollbar-thumb {
-		@apply rounded bg-gray dark:bg-light;
+		@apply bg-gray dark:bg-light;
 	}
 
 	body {

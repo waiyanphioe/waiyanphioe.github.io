@@ -6,16 +6,8 @@
 	let show;
 	let menu;
 	let isDarkMode = browser ? Boolean(document.documentElement.classList.contains('dark')) : true;
-
 	const handler = () => {
 		window.scrollY > 100 ? (show = true) : (show = false);
-	};
-
-	const disableTransitionsTemporarily = () => {
-		document.documentElement.classList.add('[&_*]:!transition-none');
-		window.setTimeout(() => {
-			document.documentElement.classList.remove('[&_*]:!transition-none');
-		}, 0);
 	};
 </script>
 
@@ -24,9 +16,7 @@
 <header class="w-full h-auto mt-[2rem] lg:mt-3 px-4 fixed top-0 left-0 right-0">
 	<nav
 		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-blur-xl ${
-			show
-				? ' bg-[rgba(255,255,255,0.5)] shadow-md dark:bg-[rgba(31,32,35,.8)] '
-				: 'bg-[hsla(0, 0%, 7%, 0)] '
+			show ? ' bg-light060 shadow-md dark:bg-darkBg ' : ' bg-dark-transparent'
 		}`}
 	>
 		<ul class="w-full h-full list-none flex justify-between px-[12px] py-[10px] m-0 items-center">
@@ -40,10 +30,10 @@
 				</a>
 			</li>
 			<li class="w-auto">
-				<ul class="list-none flex w-auto gap-2 py-[10px] px-[12px] lg:hidden items-center">
-					{#each navLinks as navLink, index}
+				<ul class="list-none flex w-auto gap-2 py-[10px] px-[12px] md:hidden items-center">
+					{#each navLinks as navLink}
 						<li
-							class="font-poppins font-medium capitalize text-[16px] text-black dark:text-light040 transition dark:hover:text-white hover:text-gray"
+							class="font-poppins font-medium capitalize text-[16px] transition-colors text-zinc-600 dark:text-light040 dark:hover:text-white hover:text-dark"
 						>
 							<a href={navLink.path} class="p-3">{navLink.title}</a>
 						</li>
@@ -58,17 +48,15 @@
 							role="switch"
 							aria-label="Toggle Dark Mode"
 							aria-checked={isDarkMode}
-							class="p-2 border-none rounded-full bg-light005 "
+							class="p-2 border-none rounded-full bg-light040 text-zinc-600 hover:text-dark dark:bg-light005 dark:text-light040 hover:dark:text-light "
 							on:click={() => {
 								isDarkMode = !isDarkMode;
 								localStorage.setItem('isDarkMode', isDarkMode.toString());
 
-								disableTransitionsTemporarily();
-
 								if (isDarkMode) {
-									document.querySelector('html').classList.add('dark');
+									document.documentElement.classList.add('dark');
 								} else {
-									document.querySelector('html').classList.remove('dark');
+									document.documentElement.classList.remove('dark');
 								}
 							}}
 						>
@@ -78,7 +66,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="w-6 h-6 dark:text-light040 hover:dark:text-light dark:block hidden"
+								class="w-6 h-6 dark:block hidden"
 							>
 								<path
 									stroke-linecap="round"
@@ -93,7 +81,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="w-6 h-6 dark:hidden block hover:text-light"
+								class="w-6 h-6 dark:hidden block"
 							>
 								<path
 									stroke-linecap="round"
@@ -112,12 +100,12 @@
 									? 'dark:bg-blue dark:hover:bg-blueDark'
 									: 'dark:bg-light020 dark:hover:bg-light010'
 							}`}
-							rel="noopener noreferrer">Download CV</a
+							rel="noopener noreferrer">Resume</a
 						>
 					</li>
 					<li class="hidden md:block">
 						<button
-							class="p-2 border-none rounded-full bg-light005"
+							class="p-2 border-none rounded-full bg-slate-200 text-zinc-600 hover:text-dark dark:bg-light005 dark:text-light040 dark:hover:text-light"
 							on:click={() => (menu = !menu)}
 						>
 							<svg
@@ -126,13 +114,23 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="w-6 h-6"
+								class={`w-6 h-6 ${menu ? 'hidden' : ''}`}
 							>
 								<path
 									stroke-linecap="round"
 									stroke-linejoin="round"
 									d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
 								/>
+							</svg>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class={`w-6 h-6 ${menu ? '' : 'hidden'}`}
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 							</svg>
 						</button>
 					</li>
@@ -142,9 +140,17 @@
 	</nav>
 	<div class={`max-w-4xl p-0 m-0 ${menu ? 'relative' : 'hidden'} minmd:hidden`}>
 		<div
-			class={`p-6 absolute top-1 right-0 mx-4 my-2 min-w-[140px] rounded-2xl transition backdrop-blur-xl bg-[rgba(31,32,35,.8)] `}
+			class={`p-6 absolute top-1 right-0 mx-4 my-2 min-w-[140px] rounded-2xl transition backdrop-blur-xl bg-light-transparent dark:shadow dark:bg-darkBg `}
 		>
-			jjijo
+			<ul class="list-none flex flex-col w-auto gap-2 py-[10px] px-[12px] items-center">
+				{#each navLinks as navLink}
+					<li
+						class="font-poppins font-medium capitalize text-[16px] transition-colors text-zinc-600 dark:text-light040 dark:hover:text-white hover:text-dark"
+					>
+						<a href={navLink.path} class="p-3">{navLink.title}</a>
+					</li>
+				{/each}
+			</ul>
 		</div>
 	</div>
 </header>

@@ -7,14 +7,18 @@ module.exports = {
 		extend: {
 			colors: {
 				dark: '#121316',
-				bgDark: '#121316',
+				darkBg: 'rgba(31,32,35,.8)',
+				'dark-transparent': 'hsla(0, 0%, 7%, 0)',
 				light: '#FFFFFF',
-				bgLight: '#FFFFFF',
+				lightBg: '',
+				'light-transparent': 'hsla(5,0,7%,0)',
 				light005: ' hsla(0, 0%, 100%, 0.05)',
 				light010: 'hsla(0, 0%, 100%, 0.1)',
 				light020: 'hsla(0, 0%, 100%, 0.2)',
+				light03: 'hsla(0, 0%, 100%, 0.3)',
 				light040: ' hsla(0, 0%, 100%, 0.4)',
 				light060: ' hsla(0, 0%, 100%, 0.6)',
+				light08: ' hsla(0, 0%, 100%, 0.8)',
 				blue: ' #248aff',
 				blueDark: '#217ce5',
 				gray: '#C4C4C4'

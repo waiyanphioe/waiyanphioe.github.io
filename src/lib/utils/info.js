@@ -2,7 +2,7 @@ export const info = {
 	baseUrl: 'https://waiyanphioe.vercel.app',
 	name: 'Wai Yan Phioe',
 	jobDescription: 'Full-Stack Web Developer',
-	about: `I'm a software engineer based in Karachi, Pakistan.
+	about: `I'm a Full-Stack Web Developer based in Meiktila, Myanmar.
    I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between.
    I have been working for 3 year, with a demonstrated history of working in the Computer Software industry. Skilled in Front-end Development.
    I have 3 years of experience in HTML, CSS, SCSS, JavaScript, Bootstrap, tailwind CSS, StyledComponent, React JS and Next JS. Hence,
@@ -70,25 +70,25 @@ export const info = {
 
 	education: [
 		{
-			name: 'Pakistan Institute of Professional Science & Technology (PIPS-TECH)',
-			location: 'Karāchi, Sindh, Pakistan',
-			startDate: '2019',
-			endDate: '2022',
-			description: ['Diploma of Associate Engineering,  Computer Information Technology (CIT)']
+			name: 'Meta',
+			location: 'Online',
+			startDate: '2022',
+			endDate: '2023',
+			description: ['Profi Certificate,  Front-End and Back-End']
 		},
 		{
-			name: 'Govt. Degree Boys College Buffer Zone',
-			location: 'Karāchi, Sindh, Pakistan',
-			startDate: '2018',
-			endDate: '2020',
-			description: ['Intermediate, Pre-Engineering']
+			name: 'University of the People',
+			location: 'Unite State',
+			startDate: '2022',
+			endDate: 'Present',
+			description: ['B.Sc, Computer Science']
 		},
 		{
 			name: 'Meiktila University',
 			location: 'Meiktila, Mandalay, Myanmar.',
 			startDate: '2018',
 			endDate: 'Present',
-			description: ['B,  Computer Science']
+			description: ['B.Sc,  Math']
 		}
 	],
 
@@ -102,9 +102,16 @@ export const info = {
 
 	projects: [
 		{
-			title: 'Astro Portfolio',
+			title: 'HooBank',
 			isFeatured: true,
-			thumbnail: '/assets/images/astro-portfolio.png',
+			thumbnail: './src/lib/images/hoobank.png',
+			githubUrl: 'https://github.com/waiyanphioe/hoobank',
+			liveUrl: 'https://hoobank-wyp.vercel.app/'
+		},
+		{
+			title: 'HooBank',
+			isFeatured: true,
+			thumbnail: './src/lib/images/hoobank.png',
 			githubUrl: 'https://github.com/uzzii-21/astro-portfolio',
 			liveUrl: 'https://astro-portfolio-uzair.vercel.app/'
 		}

@@ -7,7 +7,7 @@
 
 <div class="max-w-6xl my-0 mx-auto">
 	<Header />
-	<main>
+	<main class="p-4">
 		<slot />
 	</main>
 	<Footer />

@@ -3,7 +3,7 @@
 	export let details;
 </script>
 
-<section class="flex items-start justify-between flex-col sm:flex-row dark:text-light">
+<section class="flex items-start justify-between md:flex-col flex-row dark:text-light">
 	<h2 class="w-[15rem] mt-16">{title}</h2>
 	<div class="w-full">
 		{#each details as item}
