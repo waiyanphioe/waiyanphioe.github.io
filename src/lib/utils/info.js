@@ -1,3 +1,5 @@
+import hoobank from '$lib/images/hoobank.png';
+
 export const info = {
 	baseUrl: 'https://waiyanphioe.vercel.app',
 	name: 'Wai Yan Phioe',
@@ -104,14 +106,14 @@ export const info = {
 		{
 			title: 'HooBank',
 			isFeatured: true,
-			thumbnail: './src/lib/images/hoobank.png',
+			thumbnail: hoobank,
 			githubUrl: 'https://github.com/waiyanphioe/hoobank',
 			liveUrl: 'https://hoobank-wyp.vercel.app/'
 		},
 		{
 			title: 'HooBank',
 			isFeatured: true,
-			thumbnail: './src/lib/images/hoobank.png',
+			thumbnail: hoobank,
 			githubUrl: 'https://github.com/uzzii-21/astro-portfolio',
 			liveUrl: 'https://astro-portfolio-uzair.vercel.app/'
 		}
