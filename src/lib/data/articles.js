@@ -9,13 +9,15 @@ if (browser) {
 }
 
 // Get all posts and add metadata
-export const posts = Object.entries(import.meta.glob('/articles/**/*.md', { eager: true }))
-	.map(([filepath, post]) => {
-		const html = parse(post.default.render().html);
-		const preview = post.metadata.preview ? parse(post.metadata.preview) : html.querySelector('p');
+export const articles = Object.entries(import.meta.glob('/articles/**/*.md', { eager: true }))
+	.map(([filepath, article]) => {
+		const html = parse(article.default.render().html);
+		const preview = article.metadata.preview
+			? parse(article.metadata.preview)
+			: html.querySelector('p');
 
 		return {
-			...post.metadata,
+			...article.metadata,
 
 			// generate the slug from the file path
 			slug: filepath
@@ -28,10 +30,10 @@ export const posts = Object.entries(import.meta.glob('/articles/**/*.md', { eage
 			isIndexFile: filepath.endsWith('/index.md'),
 
 			// format date as yyyy-MM-dd
-			date: post.metadata.date
+			date: article.metadata.date
 				? format(
 						// offset by timezone so that the date is correct
-						addTimezoneOffset(new Date(post.metadata.date)),
+						addTimezoneOffset(new Date(article.metadata.date)),
 						'yyyy-MM-dd'
 				  )
 				: undefined,
@@ -49,10 +51,10 @@ export const posts = Object.entries(import.meta.glob('/articles/**/*.md', { eage
 	// sort by date
 	.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 	// add references to the next/previous post
-	.map((post, index, allPosts) => ({
-		...post,
-		next: allPosts[index - 1],
-		previous: allPosts[index + 1]
+	.map((article, index, allArticles) => ({
+		...article,
+		next: allArticles[index - 1],
+		previous: allArticles[index + 1]
 	}));
 
 function addTimezoneOffset(date) {

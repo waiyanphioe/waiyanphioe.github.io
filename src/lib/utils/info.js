@@ -15,20 +15,24 @@ export const info = {
   `,
 	navLinks: [
 		{
-			id: 'home',
+			path: '../',
 			title: 'Home'
 		},
 		{
-			id: 'features',
-			title: 'Features'
+			path: '../about',
+			title: 'About'
 		},
 		{
-			id: 'product',
-			title: 'Product'
+			path: '../articles',
+			title: 'Articles'
 		},
 		{
-			id: 'clients',
-			title: 'Clients'
+			path: '../projects',
+			title: 'Projects'
+		},
+		{
+			path: '../uses',
+			title: 'Uses'
 		}
 	],
 	experience: [
@@ -119,26 +123,3 @@ export const info = {
 		}
 	]
 };
-
-export const navLinks = [
-	{
-		path: './',
-		title: 'Home'
-	},
-	{
-		path: './about',
-		title: 'About'
-	},
-	{
-		path: './articles',
-		title: 'Articles'
-	},
-	{
-		path: './projects',
-		title: 'Projects'
-	},
-	{
-		path: './uses',
-		title: 'Uses'
-	}
-];

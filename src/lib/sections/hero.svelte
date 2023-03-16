@@ -10,8 +10,7 @@
 			<span>I build things for the web.</span>
 		</h1>
 		<p class="dark:text-light text-lg">
-			I’m a front-end developer and co-founder of Codista, a software studio in Vienna. I also write
-			about the web on my blog and elsewhere.
+			a software engineer with a passion for solving problems and learning new things.
 		</p>
 	</div>
 

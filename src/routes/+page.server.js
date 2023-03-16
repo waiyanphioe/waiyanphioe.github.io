@@ -1,8 +1,8 @@
-import { posts } from '$lib/data/posts';
+import { articles } from '$lib/data/articles';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	return {
-		posts: posts.slice(0, 5)
+		articles: articles.slice(0, 5)
 	};
 }

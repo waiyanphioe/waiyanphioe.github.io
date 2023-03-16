@@ -1,5 +1,5 @@
 <script>
-	import { navLinks } from '$lib/utils/info';
+	import { info } from '$lib/utils/info';
 	import profile from '$lib/images/profile.jpg';
 	import { browser } from '$app/environment';
 
@@ -38,7 +38,7 @@
 			</li>
 			<li class="w-auto">
 				<ul class="list-none flex w-auto gap-2 py-[10px] px-[12px] md:hidden items-center">
-					{#each navLinks as navLink}
+					{#each info.navLinks as navLink}
 						<li
 							class="font-poppins font-medium capitalize text-[16px] transition-colors text-zinc-600 dark:text-light040 dark:hover:text-white hover:text-dark"
 						>
@@ -152,7 +152,7 @@
 			class={`p-6 absolute top-1 right-0 mx-4 my-2 min-w-[140px] rounded-2xl transition backdrop-blur-xl bg-light-transparent dark:shadow dark:bg-darkBg `}
 		>
 			<ul class="list-none flex flex-col w-auto gap-2 py-[10px] px-[12px] items-center">
-				{#each navLinks as navLink}
+				{#each info.navLinks as navLink}
 					<li
 						class="font-poppins font-medium capitalize text-[16px] transition-colors text-zinc-600 dark:text-light040 dark:hover:text-white hover:text-dark"
 					>

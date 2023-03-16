@@ -2,13 +2,13 @@
 // It's helpful for SEO but does require you to keep it updated to reflect the routes of your website.
 // It is OK to delete this file if you'd rather not bother with it.
 
-import { posts } from '$lib/data/posts';
-import { website } from '$lib/info';
+import { articles } from '$lib/data/articles';
+import { info } from '$lib/utils/info.js';
 
 export const prerender = true;
 
 // make sure this matches your post route
-const getPostUrl = (slug) => `${website}/articles/${slug}`;
+const getPostUrl = (slug) => `${info.baseUrl}/articles/${slug}`;
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
@@ -32,19 +32,19 @@ export async function GET({ setHeaders }) {
       xmlns:xhtml="http://www.w3.org/1999/xhtml"
     >
       <url>
-        <loc>${website}</loc>
+        <loc>${info.baseUrl}</loc>
         <priority>1.0</priority>
       </url>
 
-      ${posts
+      ${articles
 				.map(
-					(post) => `<url>
-            <loc>${getPostUrl(post.slug)}</loc>
+					(article) => `<url>
+            <loc>${getPostUrl(article.slug)}</loc>
             <lastmod
               >${
-								post.updated
-									? new Date(post.updated).toISOString()
-									: new Date(post.date).toISOString()
+								article.updated
+									? new Date(article.updated).toISOString()
+									: new Date(article.date).toISOString()
 							}</lastmod
             >
             <changefreq>monthly</changefreq>

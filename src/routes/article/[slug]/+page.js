@@ -1,10 +1,10 @@
 export async function load({ data }) {
-	const component = data.post.isIndexFile
-		? await import(`../../../../articles/${data.post.slug}/index.md`)
-		: await import(`../../../../articles/${data.post.slug}.md`);
+	const component = data.article.isIndexFile
+		? await import(`../../../../articles/${data.article.slug}/index.md`)
+		: await import(`../../../../articles/${data.article.slug}.md`);
 
 	return {
-		post: data.post,
+		article: data.article,
 		component: component.default,
 		layout: {
 			fullWidth: true

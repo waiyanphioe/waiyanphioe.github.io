@@ -1,4 +1,4 @@
-import { posts } from '$lib/data/posts';
+import { articles } from '$lib/data/articles';
 import { paginate } from '$lib/utils';
 import { error } from '@sveltejs/kit';
 
@@ -7,7 +7,7 @@ export async function load({ params }) {
 	let page = params.page ? parseInt(params.page) : 1;
 	let limit = 10;
 
-	const articlesForPage = paginate(posts, { limit, page });
+	const articlesForPage = paginate(articles, { limit, page });
 
 	if (articlesForPage.length === 0 && page > 1) {
 		throw error(404, 'Page not found');

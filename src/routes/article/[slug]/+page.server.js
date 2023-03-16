@@ -1,4 +1,4 @@
-import { posts } from '$lib/data/posts';
+import { articles } from '$lib/data/articles';
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
@@ -6,13 +6,13 @@ export async function load({ params }) {
 	const { slug } = params;
 
 	// get post with metadata
-	const post = posts.find((post) => slug === post.slug);
+	const article = articles.find((article) => slug === article.slug);
 
-	if (!post) {
+	if (!article) {
 		throw error(404, 'Post not found');
 	}
 
 	return {
-		post
+		article
 	};
 }
