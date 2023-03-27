@@ -1,6 +1,4 @@
 <script>
-	import { easeIn, motion } from 'framer-motion';
-
 	export let name;
 </script>
 
