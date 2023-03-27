@@ -22,7 +22,7 @@
 
 <header class="w-full h-auto mt-[2rem] lg:mt-3 px-4 fixed z-30 top-0 left-0 right-0">
 	<nav
-		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-blur-md ${
+		class={`max-w-4xl h-[3.5rem] flex m-auto items-center rounded-[3.5rem] transition backdrop-saturate-50 backdrop-blur ${
 			show ? ' bg-light060 shadow-md dark:bg-darkBg ' : ' bg-dark-transparent'
 		}`}
 	>
@@ -55,7 +55,7 @@
 							role="switch"
 							aria-label="Toggle Dark Mode"
 							aria-checked={isDarkMode}
-							class="p-2 border-none rounded-full bg-light040 text-zinc-600 hover:text-dark dark:bg-light005 dark:text-light040 hover:dark:text-light "
+							class="p-2 border-none rounded-full bg-slate-200 text-zinc-600 hover:text-dark dark:bg-light005 dark:text-light040 hover:dark:text-light "
 							on:click={() => {
 								isDarkMode = !isDarkMode;
 								localStorage.setItem('isDarkMode', isDarkMode.toString());
@@ -149,7 +149,7 @@
 	</nav>
 	<div class={`max-w-4xl p-0 m-0 ${menu ? 'relative' : 'hidden'} minmd:hidden`}>
 		<div
-			class={`p-6 absolute top-1 right-0 mx-4 my-2 min-w-[140px] rounded-2xl transition backdrop-blur-xl bg-light-transparent dark:shadow dark:bg-darkBg `}
+			class={`p-6 absolute top-1 right-0 mx-4 my-2 min-w-[140px] rounded-2xl transition backdrop-saturate-50 backdrop-blur bg-light060 dark:shadow dark:bg-darkBg `}
 		>
 			<ul class="list-none flex flex-col w-auto gap-2 py-[10px] px-[12px] items-center">
 				{#each info.navLinks as navLink}
